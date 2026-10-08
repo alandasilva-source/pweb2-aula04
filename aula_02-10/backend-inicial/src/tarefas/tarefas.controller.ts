@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { TarefasService } from './tarefas.service';
 
 // @Controller('tarefas') + prefixo global 'api' => rotas em /api/tarefas.
@@ -21,7 +21,5 @@ export class TarefasController {
   //   @Delete(':id') remove()
   // =====================================================================
 }
-function Get(): (target: TarefasController, propertyKey: "findAll", descriptor: TypedPropertyDescriptor<() => any>) => void | TypedPropertyDescriptor<() => any> {
-  throw new Error('Function not implemented.');
-}
+
 
