@@ -1,18 +1,22 @@
+
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { Tarefa } from './tarefas/entities/tarefa.entity';
+
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'postgres',
+  host: process.env.DB_HOST || 'localhost',
+  port: Number(process.env.DB_PORT) || 5432,
+  username: process.env.DB_USER || 'todo',
+  password: process.env.DB_PASS || 'todo',
+  database: process.env.DB_NAME || 'todo',
   entities: [Tarefa],
-  synchronize: false, // usamos migrations, não auto-sync
+  synchronize: false,
 };
+
 const dataSource = new DataSource({
   ...dataSourceOptions,
   migrations: ['src/migrations/*.ts'],
 });
+
 export default dataSource;

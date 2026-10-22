@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity('tarefas')
 export class Tarefa {
   @PrimaryGeneratedColumn()
@@ -6,7 +7,7 @@ export class Tarefa {
 
   @Column()
   titulo: string;
-
+  
   @Column({ type: 'text', nullable: true })
   descricao?: string;
   
